@@ -1,4 +1,14 @@
-# Nuxt Personal Template
+# Nuxt App Starter
+with preconfigured css, database and auth (user & password)
+
+## Use
+- RUN `npm i`
+- CREATE `.env` with
+  - `DATABASE_URL="postgresql://user:pass@localhost:5432/mydb?schema=test"`
+- RUN `npx prisma db push` & `npx prisma generate`
+- RUN `npm run dev`
+- CREATE a user; first user is admin
+
 
 ## Packages
 - nuxt/icon
@@ -14,7 +24,7 @@
 - USE `prisma` object // use for db actions generated Prisma client as singleton
 - RUN `npx prisma studio` // look db insight
 - FILES 
-  - `/prisma` (schema, db), 
+  - `/prisma` (schema), 
   - `/lib/prisma.ts` (singleton)
 
 
@@ -38,21 +48,18 @@
 
 
 ## Deployment Nuxt App
-RUN `npm run build`
-RUN `cp -r ./prisma ./.output/server/`
-RUN `cp -r ./lib ./.output/server/`
-RUN `cp -r ./.env ./.output/server/`
-RUN `node .output/server/index.mjs`
+- RUN `npm run build`
+- RUN `cp -r ./prisma ./.output/server/`
+- RUN `cp -r ./lib ./.output/server/`
+- RUN `cp -r ./.env ./.output/server/`
+- RUN `node .output/server/index.mjs`
 
 
 ## Deployment Dockerized Nuxt App (Dev)
-*(macOS: RUN `colima start`)*
-RUN `docker build -t nuxt-app .`
-RUN `docker run -d -p 3000:3000 nuxt-app:latest`
+- *(macOS: RUN `colima start`)*
+- RUN `docker build -t nuxt-app .`
+- RUN `docker run -d -p 3000:3000 nuxt-app:latest`
 
 ## Open Topics
 - use nuxt layers
 - use ssr
-
-TODO: NEXT -> postgres starter
-TODO: SSO & postgres starter
