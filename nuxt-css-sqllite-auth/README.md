@@ -3,7 +3,7 @@ with preconfigured css, database and auth (user & password)
 
 ## Use
 - RUN `npm i`
-- CREATE .env with
+- CREATE `.env` with
   - `DATABASE_URL="file:./dev.db`
 - RUN `npx prisma db push` & `npx prisma generate`
 - RUN `npm run dev`
