@@ -8,8 +8,8 @@ export default defineNuxtRouteMiddleware(async () => {
 		const userData = await $fetch<User>('/api/users/me');
 		user.value = userData || null;
 	}
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	catch (err) {
-		console.log(err);
 		// Optional: Log error or handle unauthenticated state
 		user.value = null;
 	}
