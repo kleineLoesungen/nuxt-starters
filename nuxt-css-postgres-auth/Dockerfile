@@ -29,10 +29,7 @@ WORKDIR /app
 # Nur das Nötigste kopieren
 COPY --from=builder /app/.output/ ./
 
-# Prisma & SQLlite
-COPY prisma/ ./server/prisma/
-COPY lib/ ./server/lib/
-COPY .env ./server/
+# Kopiere die Datenbank?
 
 # Port (je nach Nuxt-Version: Nuxt 3 nutzt standardmäßig 3000)
 EXPOSE 3000
