@@ -30,8 +30,6 @@ WORKDIR /app
 COPY --from=builder /app/.output/ ./
 
 # Prisma & SQLlite
-COPY prisma/ ./server/prisma/
-COPY lib/ ./server/lib/
 COPY .env ./server/
 
 # Port (je nach Nuxt-Version: Nuxt 3 nutzt standardmäßig 3000)
