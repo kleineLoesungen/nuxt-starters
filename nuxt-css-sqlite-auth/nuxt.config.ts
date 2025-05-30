@@ -3,6 +3,17 @@ import { join } from 'path'
 import { copyFileSync, mkdirSync } from 'node:fs'
 
 export default defineNuxtConfig({
+	app: {
+	    	head: {
+			title: 'Nuxt App', // default fallback title
+	      		htmlAttrs: {
+	        		lang: 'en',
+	      		},
+	      		link: [
+	        		{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+	      		]
+	    	}
+  	},
 	modules: [
 		'@nuxt/icon',
 		'@nuxt/eslint',
