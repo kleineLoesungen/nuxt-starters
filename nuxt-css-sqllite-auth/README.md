@@ -49,8 +49,6 @@ with preconfigured css, database and auth (user & password)
 
 ## Deployment Nuxt App
 - RUN `npm run build`
-- RUN `cp -r ./prisma ./.output/server/`
-- RUN `cp -r ./lib ./.output/server/`
 - RUN `cp -r ./.env ./.output/server/`
 - RUN `node .output/server/index.mjs`
 
