@@ -29,10 +29,9 @@ WORKDIR /app
 # Nur das Nötigste kopieren
 COPY --from=builder /app/.output/ ./
 
-# Kopiere die Datenbank?
-
 # Port (je nach Nuxt-Version: Nuxt 3 nutzt standardmäßig 3000)
 EXPOSE 3000
 
 # Startbefehl
-CMD ["node", "server/index.mjs"]
+WORKDIR /app/server
+CMD ["sh", "./entrypoint.sh"]
