@@ -15,6 +15,7 @@
     "@nuxt/image": "^1.11.0",
     "@nuxt/test-utils": "^3.19.2",
     "@tailwindcss/vite": "^4.1.13",
+    "appwrite": "^20.0.0",
     "nuxt": "^4.1.2",
     "tailwindcss": "^4.1.13",
     "vue": "^3.5.21",
