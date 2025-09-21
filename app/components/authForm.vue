@@ -18,6 +18,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  showNameField: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
@@ -40,6 +44,23 @@ const props = defineProps({
     </div>
 
     <div class="space-y-4">
+      <!-- Name Input (for registration only) -->
+      <div v-if="showNameField" class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          Full Name
+        </label>
+        <div class="relative">
+          <input
+            type="text"
+            name="name"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:placeholder-gray-400"
+            placeholder="Enter your full name"
+            :disabled="isLoading"
+            required
+          />
+        </div>
+      </div>
+
       <!-- Email Input -->
       <div class="space-y-2">
         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">

@@ -36,7 +36,11 @@ const handleRegistration = async (event) => {
   isLoading.value = true;
 
   try {
-    await user.register(formData.get("email"), formData.get("password"));
+    await user.register(
+      formData.get("email"), 
+      formData.get("password"), 
+      formData.get("name")
+    );
     form.reset(); // Clear the form
   } catch (error: any) {
     console.error('Registration error:', error);
@@ -75,6 +79,7 @@ watch(isSignUp, () => {
             submit-type="Create Account"
             :error-message="errorMessage"
             :is-loading="isLoading"
+            :show-name-field="true"
           />
           <AuthForm
             v-else
@@ -82,6 +87,7 @@ watch(isSignUp, () => {
             submit-type="Sign In"
             :error-message="errorMessage"
             :is-loading="isLoading"
+            :show-name-field="false"
           />
         </div>
 
