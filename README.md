@@ -1,4 +1,8 @@
-| Starter | Last Update |
-| :--- | :--- |
-| nuxt-css-postgres-auth | 30.05.2025 |
-| nuxt-css-sqlite-auth | 30.05.2025 |
+# Nuxt Starter
+
+## Dependencies
+- `appwrite` backend with `auth` and `database`
+
+## Features
+- auth basics
+- tailwindcss
