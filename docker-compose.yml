@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      # Runtime environment variables for Nuxt
+      # These override the defaults in nuxt.config.ts at RUNTIME
+      NUXT_DATABASE_TYPE: ${DATABASE_TYPE:-postgres}
+      NUXT_DATABASE_HOST: ${DATABASE_HOST:-db}
+      NUXT_DATABASE_PORT: ${DATABASE_PORT:-5432}
+      NUXT_DATABASE_NAME: ${DATABASE_NAME:-app}
+      NUXT_DATABASE_USER: ${DATABASE_USER:-postgres}
+      NUXT_DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+      NUXT_DATABASE_SCHEMA: ${DATABASE_SCHEMA:-public}
+      NUXT_DATABASE_SSL: ${DATABASE_SSL:-false}
+      NUXT_DATABASE_MAX_CONNECTIONS: ${DATABASE_MAX_CONNECTIONS:-10}
+      NUXT_DATABASE_IDLE_TIMEOUT_MILLIS: ${DATABASE_IDLE_TIMEOUT:-30000}
+      NUXT_DATABASE_CONNECTION_TIMEOUT_MILLIS: ${DATABASE_CONNECTION_TIMEOUT:-2000}
+      NUXT_PUBLIC_REGISTRATION_ENABLED: ${REGISTRATION_ENABLED:-true}
+    depends_on:
+      - db
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/api/healthz || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-app}
+      POSTGRES_USER: ${DATABASE_USER:-postgres}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
+    driver: bridge
