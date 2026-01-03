@@ -1,4 +1,4 @@
-# vocaBox
+# app
 
 A modern Nuxt 3 web application with **capability-based permissions**, PostgreSQL database, and Docker support.
 
@@ -55,7 +55,7 @@ Choose your preferred setup method:
 ```bash
 # 1. Clone the repository
 git clone <repository-url>
-cd vocaBox
+cd nuxt-starters
 
 # 2. Start everything (app + database)
 docker-compose up -d
@@ -118,7 +118,7 @@ docker exec -it app-db psql -U postgres -d app
 ```bash
 # Clone repository
 git clone <repository-url>
-cd vocaBox
+cd nuxt-starters
 
 # Install packages
 npm install
@@ -175,7 +175,7 @@ NUXT_DATABASE_SCHEMA=app
 # NUXT_EMAIL_PORT=587
 # NUXT_EMAIL_USER=your-email@gmail.com
 # NUXT_EMAIL_PASSWORD=your-app-password
-# NUXT_EMAIL_FROM=vocaBox <noreply@example.com>
+# NUXT_EMAIL_FROM=app <noreply@example.com>
 ```
 
 ### Step 4: Run the Application
@@ -219,7 +219,7 @@ All configuration uses the `NUXT_` prefix for Nuxt's runtime config:
 | `NUXT_DATABASE_MAX_CONNECTIONS` | Connection pool size | `10` | `20` |
 | `NUXT_DATABASE_IDLE_TIMEOUT` | Idle timeout (ms) | `30000` | `60000` |
 | `NUXT_DATABASE_CONNECTION_TIMEOUT` | Connection timeout (ms) | `2000` | `5000` |
-| `NUXT_PUBLIC_APP_NAME` | Application name | `vocaBox` | `My App` |
+| `NUXT_PUBLIC_APP_NAME` | Application name | `app` | `My App` |
 
 #### Email Configuration (Optional)
 
@@ -231,7 +231,7 @@ Leave `NUXT_EMAIL_HOST` empty to disable email notifications:
 | `NUXT_EMAIL_PORT` | SMTP port | `587` |
 | `NUXT_EMAIL_USER` | SMTP username | `your-email@gmail.com` |
 | `NUXT_EMAIL_PASSWORD` | SMTP password | `your-app-password` |
-| `NUXT_EMAIL_FROM` | From address | `vocaBox <noreply@example.com>` |
+| `NUXT_EMAIL_FROM` | From address | `app <noreply@example.com>` |
 
 ### Example .env Files
 
@@ -262,7 +262,7 @@ NUXT_EMAIL_HOST=smtp.gmail.com
 NUXT_EMAIL_PORT=587
 NUXT_EMAIL_USER=noreply@yourdomain.com
 NUXT_EMAIL_PASSWORD=app_password
-NUXT_EMAIL_FROM=vocaBox <noreply@yourdomain.com>
+NUXT_EMAIL_FROM=app <noreply@yourdomain.com>
 ```
 
 ---
@@ -463,7 +463,7 @@ npm run test -- users.test.ts
 ### Project Structure
 
 ```
-vocaBox/
+/
 ├── app/                          # Client application
 │   ├── assets/css/               # Tailwind styles
 │   ├── components/               # Vue components

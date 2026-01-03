@@ -1,6 +1,6 @@
 # Test Suite
 
-Comprehensive test suite for vocaBox covering authentication, permissions, database operations, and API endpoints.
+Comprehensive test suite for app covering authentication, permissions, database operations, and API endpoints.
 
 ## Quick Start
 

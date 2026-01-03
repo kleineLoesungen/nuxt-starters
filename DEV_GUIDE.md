@@ -1,6 +1,6 @@
 # Developer Guide
 
-Complete reference for developing with vocaBox.
+Complete reference for developing with app.
 
 ## Table of Contents
 
@@ -29,7 +29,7 @@ Complete reference for developing with vocaBox.
 ### Project Structure
 
 ```
-vocaBox/
+/
 ├── app/                          # Client-side application
 │   ├── assets/css/               # Global styles
 │   ├── components/               # Vue components
@@ -92,7 +92,7 @@ vocaBox/
 
 ### Overview
 
-vocaBox uses a **capability-based permission system** where:
+app uses a **capability-based permission system** where:
 - Each permission represents a complete feature/capability
 - One permission covers all related pages, APIs, and UI sections
 - Developers register permissions in code
@@ -422,7 +422,7 @@ const hasPermission = (resource: string): boolean => {
 
 ### Overview
 
-vocaBox supports two types of groups:
+app supports two types of groups:
 
 1. **Public Groups** (`is_public: true`)
    - Visible to users in the application
@@ -1037,7 +1037,7 @@ UPDATE groups SET is_public = false WHERE name = 'Admins';
 
 ### Architecture
 
-vocaBox uses an extensible database connector architecture that supports PostgreSQL and can be extended for other databases.
+app uses an extensible database connector architecture that supports PostgreSQL and can be extended for other databases.
 
 ### Configuration
 
@@ -1380,7 +1380,7 @@ NUXT_DATABASE_TYPE=mysql
 
 ### Overview
 
-vocaBox uses **session-based authentication** with:
+app uses **session-based authentication** with:
 - Password hashing (bcrypt)
 - HTTP-only secure cookies
 - 7-day session duration
@@ -1615,7 +1615,7 @@ export async function cleanupExpiredSessions(): Promise<void> {
 
 ### Overview
 
-vocaBox provides an **optional email notification system** using:
+app provides an **optional email notification system** using:
 - SMTP-based email delivery (nodemailer)
 - Template registry pattern (similar to permissions)
 - Automatic configuration checking (no manual checks needed)
@@ -1962,7 +1962,7 @@ export default defineEventHandler(async (event) => {
 
 ### Built-in Templates
 
-vocaBox includes these email templates by default:
+app includes these email templates by default:
 
 | Key | Description | Data Required | Trigger |
 |-----|-------------|---------------|---------|
@@ -2654,7 +2654,7 @@ NUXT_DATABASE_USER=app_user
 NUXT_DATABASE_PASSWORD=secure_password
 NUXT_DATABASE_SCHEMA=app
 NUXT_DATABASE_SSL=true
-NUXT_PUBLIC_APP_NAME=vocaBox
+NUXT_PUBLIC_APP_NAME=app
 ```
 
 2. **Build application**:

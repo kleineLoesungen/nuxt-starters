@@ -28,10 +28,10 @@ describe('Email Utility', () => {
           port: 587,
           user: 'test@example.com',
           password: 'password',
-          from: 'vocaBox Test <test@example.com>',
+          from: 'app Test <test@example.com>',
         },
         public: {
-          appName: 'vocaBox Test',
+          appName: 'app Test',
         },
       }));
 
@@ -47,10 +47,10 @@ describe('Email Utility', () => {
           port: 587,
           user: '',
           password: '',
-          from: 'vocaBox Test <test@example.com>',
+          from: 'app Test <test@example.com>',
         },
         public: {
-          appName: 'vocaBox Test',
+          appName: 'app Test',
         },
       }));
 
@@ -72,10 +72,10 @@ describe('Email Utility', () => {
           port: 587,
           user: '',
           password: '',
-          from: 'vocaBox Test <test@example.com>',
+          from: 'app Test <test@example.com>',
         },
         public: {
-          appName: 'vocaBox Test',
+          appName: 'app Test',
         },
       }));
 
@@ -102,10 +102,10 @@ describe('Email Utility', () => {
           port: 587,
           user: '',
           password: '',
-          from: 'vocaBox Test <test@example.com>',
+          from: 'app Test <test@example.com>',
         },
         public: {
-          appName: 'vocaBox Test',
+          appName: 'app Test',
         },
       }));
 
