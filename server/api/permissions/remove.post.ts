@@ -25,6 +25,8 @@ export default defineEventHandler(async (event) => {
     'SELECT p.permission_key, p.group_id FROM permissions p WHERE p.id = $1',
     [permissionId]
   );
+
+  let groupName = 'Unknown';
   
   if (permission.length > 0) {
     const groupInfo = await dbQuery<{ name: string }>(
@@ -32,11 +34,15 @@ export default defineEventHandler(async (event) => {
       [permission[0].group_id]
     );
     
-    if (groupInfo.length > 0 && groupInfo[0].name === 'Admins' && permission[0].permission_key === 'admin.manage') {
-      throw createError({
-        statusCode: 403,
-        message: 'The admin.manage permission cannot be removed from the Admins group',
-      });
+    if (groupInfo.length > 0) {
+      groupName = groupInfo[0].name;
+      
+      if (groupName === 'Admins' && permission[0].permission_key === 'admin.manage') {
+        throw createError({
+          statusCode: 403,
+          message: 'The admin.manage permission cannot be removed from the Admins group',
+        });
+      }
     }
   }
 
@@ -44,7 +50,6 @@ export default defineEventHandler(async (event) => {
 
   // Log the removal
   const user = await getUserFromEvent(event);
-  const groupName = groupInfo.length > 0 ? groupInfo[0].name : 'Unknown';
   logPermissionEvent('removed', permission[0].group_id, groupName, permission[0].permission_key, user?.username || 'system');
 
   return {
