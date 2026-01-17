@@ -41,8 +41,8 @@ export default defineEventHandler(async (event) => {
   }
 
   // Prevent resetting own password (use regular password change for that)
-  const session = await requirePermission(event, '/api/users/admin/reset-password');
-  if (session.userId === userId) {
+  const admin = await getUserFromEvent(event);
+  if (admin && admin.id === userId) {
     throw createError({
       statusCode: 403,
       message: 'You cannot reset your own password. Use the profile page instead.',
@@ -62,7 +62,6 @@ export default defineEventHandler(async (event) => {
   );
 
   // Log the password reset
-  const admin = await getUserFromEvent(event);
   logUserEvent('password_reset', userId, user.username, admin?.username || 'system');
 
   return {
